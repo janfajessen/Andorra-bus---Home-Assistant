@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Añadir parada de bus",
+        "description": "Cómo quieres buscar la parada?",
+        "data": {
+          "search_method": "Método de búsqueda"
+        }
+      },
+      "by_name": {
+        "title": "Busca por nombre",
+        "description": "Escriu el nom d'una parada o localitat d'Andorra",
+        "data": {
+          "stop_search": "Nom de la parada (ex: Valira Nova, Encamp, Escaldes...)"
+        }
+      },
+      "all_stops": {
+        "title": "Totes les parades d'Andorra",
+        "description": "Selecciona la parada de la llista completa",
+        "data": {
+          "stop_id": "Parada"
+        }
+      },
+      "by_line": {
+        "title": "Cerca per línia",
+        "description": "Escriu el número o nom de la línia (ex: L1, L3, N1...)",
+        "data": {
+          "line_search": "Línia de bus"
+        }
+      },
+      "select_stop": {
+        "title": "Selecciona la parada",
+        "description": "Tria la parada que vols monitoritzar",
+        "data": {
+          "stop_id": "Parada"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No s'ha pogut connectar amb el servidor de FEDA Mou-te",
+      "no_results": "No s'ha trobat cap parada amb aquest nom",
+      "empty_query": "Escriu el nom d'una parada o línia"
+    },
+    "abort": {
+      "already_configured": "Aquesta parada ja està configurada"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcions de la parada",
+        "data": {
+          "scan_interval": "Interval d'actualització (segons, 30-300)",
+          "departures_count": "Nombre de sortides a mostrar (1-10)"
+        }
+      }
+    }
+  }
+}
