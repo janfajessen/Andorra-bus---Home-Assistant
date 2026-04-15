@@ -1,12 +1,19 @@
+<div align="center">
+
 # 🚌 Andorra Bus — Home Assistant Integration
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Home%20Assistant-2024.1%2B-blue?logo=homeassistant&logoColor=white" />
-  <img src="https://img.shields.io/badge/HACS-Compatible-41BDF5?logo=homeassistantcommunitystore&logoColor=white" />
-  <img src="https://img.shields.io/badge/FEDA%20Mou--te-API%20HAFAS-orange" />
-  <img src="https://img.shields.io/badge/versio-1.2.0-brightgreen" />
-  <img src="https://img.shields.io/badge/llicencia-MIT-lightgrey" />
-</p>
+![Version](https://img.shields.io/badge/version-1.5.24-blue?style=for-the-badge)
+![HA](https://img.shields.io/badge/Home%20Assistant-2024.1+-orange?style=for-the-badge&logo=home-assistant)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python)
+![HACS](https://img.shields.io/badge/HACS-Custom-41BDF5?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/janfajessen)
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red?style=for-the-badge&logo=patreon)](https://www.patreon.com/janfajessen)
+<!--[![Ko-Fi](https://img.shields.io/badge/Ko--Fi-Support-teal?style=for-the-badge&logo=ko-fi)](https://ko-fi.com/janfajessen)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Support-pink?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/janfajessen)
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue?style=for-the-badge&logo=paypal)](https://paypal.me/janfajessen)-->
+
+</div>
 
 <p align="center">
   <b>Horaris de bus en temps real d'Andorra per a Home Assistant</b><br/>
@@ -15,32 +22,274 @@
 
 ---
 
-## 🇦🇩 Catala
 
-Integracio personalitzada per obtenir els horaris en temps real dels autobusos publics d'Andorra (FEDA Mou-te) directament a Home Assistant, sense cap clau d'API ni registre.
+<details>
+<summary>🇪🇸 Español </summary>
 
-### Caracteristiques
+## Andorra Bus para Home Assistant
+
+Integración personalizada para obtener los horarios en tiempo real de los autobuses públicos de Andorra (FEDA Mou-te) directamente en Home Assistant.
+
+### Características
+
+- Tiempo real — horarios actualizados cada minuto desde la API oficial HAFAS de FEDA
+- Cualquier parada — busca por nombre, navega todas las paradas de Andorra o filtra por línea
+- Sensores automáticos por línea — un sensor por cada línea que pasa por la parada
+- Buses nocturnos — incluye líneas BN
+- Retrasos en tiempo real — muestra adelantos y retrasos cuando la API los proporciona
+- Sin servicio silencioso — los días sin servicio no genera errores en el log
+
+### Sensores creados
+
+| Sensor | Estado | Descripción |
+|--------|--------|-------------|
+| `bus_[parada]_propera_sortida` | `11 min L2` | Próxima salida con línea y minutos |
+| `bus_[parada]_l2` | `11:16` | Próxima salida de la línea L2 |
+| `bus_[parada]_bn2` | `Mañana 23:57` | Próxima salida del bus nocturno |
+
+### Instalación via HACS (recomendada)
+
+1. Abre **HACS → Integraciones → ⋮ → Repositorios personalizados**
+2. Añade `https://github.com/janfajessen/andorra_bus` como **Integración**
+3. Busca **Andorra Bus** e instala
+4. Reinicia Home Assistant
+5. Ve a **Configuración → Integraciones → Añadir integración** y busca **Andorra Bus**
+
+### Instalación manual
+
+1. Descarga los archivos de este repositorio
+2. Copia la carpeta `andorra_bus` a `/config/custom_components/andorra_bus/`
+3. Reinicia Home Assistant
+
+### Configuración
+
+| Método | Descripción |
+|--------|-------------|
+| Por nombre | Escribe el nombre de la parada (ej: `Valira Nova`) |
+| Todas las paradas | Navega la lista completa de paradas de Andorra |
+| Por línea | Filtra por número de línea (ej: `L2`, `BN2`) |
+
+### Ejemplo de automatización
+
+```yaml
+automation:
+  alias: "Aviso bus en 10 minutos"
+  trigger:
+    - platform: template
+      value_template: >
+        {% set mins = state_attr('sensor.bus_valira_nova_213_propera_sortida', 'minutes_until') %}
+        {{ mins is not none and mins | int <= 10 and mins | int > 9 }}
+  action:
+    - service: notify.mobile_app_telefon
+      data:
+        message: >
+          El bus sale en
+          {{ state_attr('sensor.bus_valira_nova_213_propera_sortida', 'minutes_until') }} minutos —
+          {{ state_attr('sensor.bus_valira_nova_213_propera_sortida', 'line') }}
+```
+
+### Notas técnicas
+
+- Usa la API HAFAS de `feda.hafas.cloud` (la misma que la app oficial FEDA Mou-te)
+- No requiere ninguna clave de API ni registro
+- Intervalo de actualización: **60 segundos** — Ventana de tiempo: **24 horas**
+
+</details>
+
+---
+
+<details>
+<summary>🇫🇷 Français </summary>
+
+## Andorra Bus pour Home Assistant
+
+Intégration personnalisée pour obtenir les horaires en temps réel des bus publics d'Andorre (FEDA Mou-te) directement dans Home Assistant.
+
+### Fonctionnalités
+
+- Temps réel — horaires mis à jour chaque minute depuis l'API officielle HAFAS de FEDA
+- N'importe quel arrêt — recherche par nom, liste complète ou par ligne
+- Capteurs automatiques par ligne — un capteur pour chaque ligne desservant l'arrêt
+- Bus de nuit — inclut les lignes BN
+- Retards en temps réel — affiche les avances et retards quand l'API les fournit
+- Sans service silencieux — pas d'erreurs dans le log les jours sans service
+
+### Capteurs créés
+
+| Capteur | État | Description |
+|---------|------|-------------|
+| `bus_[arret]_propera_sortida` | `11 min L2` | Prochain départ avec ligne et minutes |
+| `bus_[arret]_l2` | `11:16` | Prochain départ de la ligne L2 |
+| `bus_[arret]_bn2` | `Demain 23:57` | Prochain départ du bus de nuit |
+
+### Installation via HACS (recommandée)
+
+1. Ouvrez **HACS → Intégrations → ⋮ → Dépôts personnalisés**
+2. Ajoutez `https://github.com/janfajessen/andorra_bus` comme **Intégration**
+3. Cherchez **Andorra Bus** et installez
+4. Redémarrez Home Assistant
+
+### Installation manuelle
+
+1. Téléchargez les fichiers de ce dépôt
+2. Copiez le dossier `andorra_bus` dans `/config/custom_components/andorra_bus/`
+3. Redémarrez Home Assistant
+
+### Configuration
+
+| Méthode | Description |
+|---------|-------------|
+| Par nom | Tapez le nom de l'arrêt (ex : `Valira Nova`) |
+| Tous les arrêts | Parcourez la liste complète des arrêts d'Andorre |
+| Par ligne | Filtrez par numéro de ligne (ex : `L2`, `BN2`) |
+
+### Notes techniques
+
+- Utilise l'API HAFAS de `feda.hafas.cloud` (même backend que l'app officielle FEDA Mou-te)
+- Aucune clé API ni inscription requise
+- Intervalle de mise à jour : **60 secondes** — Fenêtre de temps : **24 heures**
+
+</details>
+
+---
+
+<details>
+<summary>🇬🇧 English </summary>
+
+## Andorra Bus for Home Assistant
+
+Custom integration to get real-time public bus schedules for Andorra (FEDA Mou-te) directly in Home Assistant.
+
+### Features
+
+- Real-time — schedules updated every minute from the official FEDA HAFAS API
+- Any stop — search by name, browse all stops in Andorra, or filter by line
+- Automatic sensors per line — one sensor for each line serving the selected stop
+- Night buses — includes BN lines
+- Real-time delays — shows early arrivals and delays when provided by the API
+- Silent no-service — no log errors on days with no service
+
+### Created sensors
+
+| Sensor | State | Description |
+|--------|-------|-------------|
+| `bus_[stop]_propera_sortida` | `11 min L2` | Next departure with line and minutes |
+| `bus_[stop]_l2` | `11:16` | Next departure for line L2 |
+| `bus_[stop]_bn2` | `Tomorrow 23:57` | Next night bus departure |
+
+### HACS installation (recommended)
+
+1. Open **HACS → Integrations → ⋮ → Custom repositories**
+2. Add `https://github.com/janfajessen/andorra_bus` as an **Integration**
+3. Search for **Andorra Bus** and install
+4. Restart Home Assistant
+5. Go to **Settings → Integrations → Add integration** and search **Andorra Bus**
+
+### Manual installation
+
+1. Download the files from this repository
+2. Copy the `andorra_bus` folder to `/config/custom_components/andorra_bus/`
+3. Restart Home Assistant
+
+### Configuration
+
+| Method | Description |
+|--------|-------------|
+| By name | Type the stop name (e.g. `Valira Nova`) |
+| All stops | Browse the full list of stops in Andorra |
+| By line | Filter by line number (e.g. `L2`, `BN2`) |
+
+### Technical notes
+
+- Uses the HAFAS API at `feda.hafas.cloud` (same backend as the official FEDA Mou-te app)
+- No API key or registration required
+- Update interval: **60 seconds** — Time window: **24 hours**
+- Coverage: all urban and interurban lines in Andorra (L1-L5, BN1-BN3...)
+
+</details>
+
+---
+
+<details>
+<summary>🇵🇹 Português </summary>
+
+## Andorra Bus para Home Assistant
+
+Integração personalizada para obter os horários em tempo real dos autocarros públicos de Andorra (FEDA Mou-te) diretamente no Home Assistant.
+
+### Funcionalidades
+
+- Tempo real — horários atualizados a cada minuto a partir da API oficial HAFAS da FEDA
+- Qualquer paragem — pesquise por nome, navegue por todas as paragens ou filtre por linha
+- Sensores automáticos por linha — um sensor para cada linha que serve a paragem
+- Autocarros noturnos — inclui linhas BN
+- Atrasos em tempo real — mostra antecipações e atrasos quando a API os fornece
+- Sem serviço silencioso — sem erros no log nos dias sem serviço
+
+### Sensores criados
+
+| Sensor | Estado | Descrição |
+|--------|--------|-----------|
+| `bus_[paragem]_propera_sortida` | `11 min L2` | Próxima partida com linha e minutos |
+| `bus_[paragem]_l2` | `11:16` | Próxima partida da linha L2 |
+| `bus_[paragem]_bn2` | `Amanhã 23:57` | Próxima partida do autocarro noturno |
+
+### Instalação via HACS (recomendada)
+
+1. Abra **HACS → Integrações → ⋮ → Repositórios personalizados**
+2. Adicione `https://github.com/janfajessen/andorra_bus` como **Integração**
+3. Procure **Andorra Bus** e instale
+4. Reinicie o Home Assistant
+
+### Instalação manual
+
+1. Descarregue os ficheiros deste repositório
+2. Copie a pasta `andorra_bus` para `/config/custom_components/andorra_bus/`
+3. Reinicie o Home Assistant
+
+### Configuração
+
+| Método | Descrição |
+|--------|-----------|
+| Por nome | Escreva o nome da paragem (ex: `Valira Nova`) |
+| Todas as paragens | Navegue pela lista completa de paragens de Andorra |
+| Por linha | Filtre por número de linha (ex: `L2`, `BN2`) |
+
+### Notas técnicas
+
+- Utiliza a API HAFAS de `feda.hafas.cloud` (o mesmo backend que a app oficial FEDA Mou-te)
+- Não requer chave de API nem registo
+- Intervalo de atualização: **60 segundos** — Janela de tempo: **24 horas**
+
+</details>
+
+
+## Andorra Bus per a Home Assistant
+
+Integració personalitzada per obtenir els horaris en temps real dels autobusos públics d'Andorra (FEDA Mou-te) directament a Home Assistant, sense cap clau d'API ni registre.
+
+### Característiques
 
 - Temps real — horaris actualitzats cada minut des de l'API oficial HAFAS de FEDA
-- Qualsevol parada — cerca per nom, navega totes les parades d'Andorra o filtra per linia
-- Sensors automatics per linia — un sensor per cada linia que passa per la parada
-- Busos nocturns — inclou linies BN (Bus Nocturn)
-- Retards en temps real — mostra avencos i retards quan l'API els proporciona
-- Sense servei silencies — els dies sense servei no genera errors al log
-- Multilingue — interficie en catala, castella, angles, frances i portugues
+- Qualsevol parada — cerca per nom, navega totes les parades d'Andorra o filtra per línia
+- Sensors automàtics per línia — un sensor per cada línia que passa per la parada
+- Busos nocturns — inclou línies BN (Bus Nocturn)
+- Retards en temps real — mostra avanços i retards quan l'API els proporciona
+- Sense servei silenciós — els dies sense servei no genera errors al log
+- Multilingüe — interfície en català, castellà, anglès, francès i portuguès
 
 ### Sensors creats
 
-Per a cada parada configurada, la integracio crea automaticament:
+Per a cada parada configurada, la integració crea automàticament:
 
-| Sensor | Estat | Descripcio |
+| Sensor | Estat | Descripció |
 |--------|-------|------------|
-| `bus_[parada]_propera_sortida` | `11 min L2` | Proxima sortida amb linia i minuts |
-| `bus_[parada]_l2` | `11:16` | Proxima sortida de la linia L2 |
-| `bus_[parada]_l4` | `Dema 08:00` | Proxima sortida de la linia L4 |
-| `bus_[parada]_bn2` | `Dll 23:57` | Proxima sortida del bus nocturn |
+| `bus_[parada]_propera_sortida` | `11 min L2` | Pròxima sortida amb línia i minuts |
+| `bus_[parada]_l2` | `11:16` | Pròxima sortida de la línia L2 |
+| `bus_[parada]_l4` | `Demà 08:00` | Pròxima sortida de la línia L4 |
+| `bus_[parada]_bn2` | `Dl 23:57` | Pròxima sortida del bus nocturn |
 
-Els sensors de linia es creen **dinamicament** segons les linies que l'API retorna. Dies de cap de setmana amb menys servei simplement no mostren algunes linies.
+Els sensors de línia es creen **dinàmicament** segons les línies que l'API retorna. Els dies de cap de setmana amb menys servei simplement no mostren algunes línies.
 
 #### Atributs dels sensors
 
@@ -84,30 +333,30 @@ next_departures:
 
 ---
 
-### Installacio via HACS (recomanada)
+### Installació via HACS (recomanada)
 
 1. Obre **HACS → Integracions → ⋮ → Repositoris personalitzats**
-2. Afegeix `https://github.com/janfajessen/andorra_bus` com a **Integracio**
-3. Busca **Andorra Bus** i installa
+2. Afegeix `https://github.com/janfajessen/andorra_bus` com a **Integració**
+3. Busca **Andorra Bus** i instal·la
 4. Reinicia Home Assistant
-5. Ves a **Configuracio → Integracions → Afegir integracio** i cerca **Andorra Bus**
+5. Ves a **Configuració → Integracions → Afegir integració** i cerca **Andorra Bus**
 
-### Installacio manual
+### Instal·lació manual
 
 1. Baixa els fitxers d'aquest repositori
 2. Copia la carpeta `andorra_bus` a `/config/custom_components/andorra_bus/`
 3. Reinicia Home Assistant
-4. Ves a **Configuracio → Integracions → Afegir integracio** i cerca **Andorra Bus**
+4. Ves a **Configuració → Integracions → Afegir integració** i cerca **Andorra Bus**
 
-### Configuracio
+### Configuració
 
 Durant la installacio pots cercar la teva parada de tres maneres:
 
-| Metode | Descripcio |
+| Metode | Descripció |
 |--------|------------|
 | Per nom | Escriu el nom de la parada (ex: `Valira Nova`) |
 | Totes les parades | Navega la llista completa de parades d'Andorra |
-| Per linia | Filtra per numero de linia (ex: `L2`, `BN2`) |
+| Per linia | Filtra per número de línia (ex: `L2`, `BN2`) |
 
 ---
 
@@ -231,7 +480,7 @@ entities:
 
 ### Automatitzacions
 
-#### Avis quan el bus surt en menys de 10 minuts
+#### Avís quan el bus surt en menys de 10 minuts
 
 ```yaml
 automation:
@@ -254,7 +503,7 @@ automation:
           Desti: {{ state_attr('sensor.bus_valira_nova_213_propera_sortida', 'direction') }}
 ```
 
-#### Avis si el bus porta retard
+#### Avís si el bus porta retard
 
 ```yaml
 automation:
@@ -296,7 +545,7 @@ automation:
           cap a {{ state_attr('sensor.bus_valira_nova_213_propera_sortida', 'direction') }}
 ```
 
-#### Avis intel·ligent nomes dies laborables
+#### Avís intel·ligent només dies laborables
 
 ```yaml
 automation:
@@ -325,261 +574,21 @@ automation:
 
 ---
 
-### Notes tecniques
+### Notes tècniques
 
 - Utilitza l'API HAFAS de `feda.hafas.cloud` — la mateixa que l'app oficial FEDA Mou-te
 - No requereix cap clau d'API ni registre
-- Interval d'actualitzacio predeterminat: **60 segons**
-- Finestra de temps consultada: **24 hores** (inclou busos de l'endema)
-- Cobertura: totes les linies urbanes i interurbanes (L1-L5, BN1-BN3...)
-- Dies sense servei: la integracio retorna llista buida silenciosament, sense errors al log
+- Interval d'actualització predeterminat: **60 segons**
+- Finestra de temps consultada: **24 hores** (inclou busos de l'endemà)
+- Cobertura: totes les línies urbanes i interurbanes (L1-L5, BN1-BN3...)
+- Dies sense servei: la integració retorna llista buida silenciosament, sense errors al log
 
 ---
-
-<details>
-<summary>🇪🇸 Español — Haz clic para desplegar</summary>
-
-## Andorra Bus para Home Assistant
-
-Integración personalizada para obtener los horarios en tiempo real de los autobuses públicos de Andorra (FEDA Mou-te) directamente en Home Assistant.
-
-### Características
-
-- Tiempo real — horarios actualizados cada minuto desde la API oficial HAFAS de FEDA
-- Cualquier parada — busca por nombre, navega todas las paradas de Andorra o filtra por línea
-- Sensores automáticos por línea — un sensor por cada línea que pasa por la parada
-- Buses nocturnos — incluye líneas BN
-- Retrasos en tiempo real — muestra adelantos y retrasos cuando la API los proporciona
-- Sin servicio silencioso — los días sin servicio no genera errores en el log
-
-### Sensores creados
-
-| Sensor | Estado | Descripción |
-|--------|--------|-------------|
-| `bus_[parada]_propera_sortida` | `11 min L2` | Próxima salida con línea y minutos |
-| `bus_[parada]_l2` | `11:16` | Próxima salida de la línea L2 |
-| `bus_[parada]_bn2` | `Mañana 23:57` | Próxima salida del bus nocturno |
-
-### Instalación via HACS (recomendada)
-
-1. Abre **HACS → Integraciones → ⋮ → Repositorios personalizados**
-2. Añade `https://github.com/janfajessen/andorra_bus` como **Integración**
-3. Busca **Andorra Bus** e instala
-4. Reinicia Home Assistant
-5. Ve a **Configuración → Integraciones → Añadir integración** y busca **Andorra Bus**
-
-### Instalación manual
-
-1. Descarga los archivos de este repositorio
-2. Copia la carpeta `andorra_bus` a `/config/custom_components/andorra_bus/`
-3. Reinicia Home Assistant
-
-### Configuración
-
-| Método | Descripción |
-|--------|-------------|
-| Por nombre | Escribe el nombre de la parada (ej: `Valira Nova`) |
-| Todas las paradas | Navega la lista completa de paradas de Andorra |
-| Por línea | Filtra por número de línea (ej: `L2`, `BN2`) |
-
-### Ejemplo de automatización
-
-```yaml
-automation:
-  alias: "Aviso bus en 10 minutos"
-  trigger:
-    - platform: template
-      value_template: >
-        {% set mins = state_attr('sensor.bus_valira_nova_213_propera_sortida', 'minutes_until') %}
-        {{ mins is not none and mins | int <= 10 and mins | int > 9 }}
-  action:
-    - service: notify.mobile_app_telefon
-      data:
-        message: >
-          El bus sale en
-          {{ state_attr('sensor.bus_valira_nova_213_propera_sortida', 'minutes_until') }} minutos —
-          {{ state_attr('sensor.bus_valira_nova_213_propera_sortida', 'line') }}
-```
-
-### Notas técnicas
-
-- Usa la API HAFAS de `feda.hafas.cloud` (la misma que la app oficial FEDA Mou-te)
-- No requiere ninguna clave de API ni registro
-- Intervalo de actualización: **60 segundos** — Ventana de tiempo: **24 horas**
-
-</details>
-
----
-
-<details>
-<summary>🇫🇷 Français — Cliquez pour déplier</summary>
-
-## Andorra Bus pour Home Assistant
-
-Intégration personnalisée pour obtenir les horaires en temps réel des bus publics d'Andorre (FEDA Mou-te) directement dans Home Assistant.
-
-### Fonctionnalités
-
-- Temps réel — horaires mis à jour chaque minute depuis l'API officielle HAFAS de FEDA
-- N'importe quel arrêt — recherche par nom, liste complète ou par ligne
-- Capteurs automatiques par ligne — un capteur pour chaque ligne desservant l'arrêt
-- Bus de nuit — inclut les lignes BN
-- Retards en temps réel — affiche les avances et retards quand l'API les fournit
-- Sans service silencieux — pas d'erreurs dans le log les jours sans service
-
-### Capteurs créés
-
-| Capteur | État | Description |
-|---------|------|-------------|
-| `bus_[arret]_propera_sortida` | `11 min L2` | Prochain départ avec ligne et minutes |
-| `bus_[arret]_l2` | `11:16` | Prochain départ de la ligne L2 |
-| `bus_[arret]_bn2` | `Demain 23:57` | Prochain départ du bus de nuit |
-
-### Installation via HACS (recommandée)
-
-1. Ouvrez **HACS → Intégrations → ⋮ → Dépôts personnalisés**
-2. Ajoutez `https://github.com/janfajessen/andorra_bus` comme **Intégration**
-3. Cherchez **Andorra Bus** et installez
-4. Redémarrez Home Assistant
-
-### Installation manuelle
-
-1. Téléchargez les fichiers de ce dépôt
-2. Copiez le dossier `andorra_bus` dans `/config/custom_components/andorra_bus/`
-3. Redémarrez Home Assistant
-
-### Configuration
-
-| Méthode | Description |
-|---------|-------------|
-| Par nom | Tapez le nom de l'arrêt (ex : `Valira Nova`) |
-| Tous les arrêts | Parcourez la liste complète des arrêts d'Andorre |
-| Par ligne | Filtrez par numéro de ligne (ex : `L2`, `BN2`) |
-
-### Notes techniques
-
-- Utilise l'API HAFAS de `feda.hafas.cloud` (même backend que l'app officielle FEDA Mou-te)
-- Aucune clé API ni inscription requise
-- Intervalle de mise à jour : **60 secondes** — Fenêtre de temps : **24 heures**
-
-</details>
-
----
-
-<details>
-<summary>🇬🇧 English — Click to expand</summary>
-
-## Andorra Bus for Home Assistant
-
-Custom integration to get real-time public bus schedules for Andorra (FEDA Mou-te) directly in Home Assistant.
-
-### Features
-
-- Real-time — schedules updated every minute from the official FEDA HAFAS API
-- Any stop — search by name, browse all stops in Andorra, or filter by line
-- Automatic sensors per line — one sensor for each line serving the selected stop
-- Night buses — includes BN lines
-- Real-time delays — shows early arrivals and delays when provided by the API
-- Silent no-service — no log errors on days with no service
-
-### Created sensors
-
-| Sensor | State | Description |
-|--------|-------|-------------|
-| `bus_[stop]_propera_sortida` | `11 min L2` | Next departure with line and minutes |
-| `bus_[stop]_l2` | `11:16` | Next departure for line L2 |
-| `bus_[stop]_bn2` | `Tomorrow 23:57` | Next night bus departure |
-
-### HACS installation (recommended)
-
-1. Open **HACS → Integrations → ⋮ → Custom repositories**
-2. Add `https://github.com/janfajessen/andorra_bus` as an **Integration**
-3. Search for **Andorra Bus** and install
-4. Restart Home Assistant
-5. Go to **Settings → Integrations → Add integration** and search **Andorra Bus**
-
-### Manual installation
-
-1. Download the files from this repository
-2. Copy the `andorra_bus` folder to `/config/custom_components/andorra_bus/`
-3. Restart Home Assistant
-
-### Configuration
-
-| Method | Description |
-|--------|-------------|
-| By name | Type the stop name (e.g. `Valira Nova`) |
-| All stops | Browse the full list of stops in Andorra |
-| By line | Filter by line number (e.g. `L2`, `BN2`) |
-
-### Technical notes
-
-- Uses the HAFAS API at `feda.hafas.cloud` (same backend as the official FEDA Mou-te app)
-- No API key or registration required
-- Update interval: **60 seconds** — Time window: **24 hours**
-- Coverage: all urban and interurban lines in Andorra (L1-L5, BN1-BN3...)
-
-</details>
-
----
-
-<details>
-<summary>🇵🇹 Português — Clique para expandir</summary>
-
-## Andorra Bus para Home Assistant
-
-Integração personalizada para obter os horários em tempo real dos autocarros públicos de Andorra (FEDA Mou-te) diretamente no Home Assistant.
-
-### Funcionalidades
-
-- Tempo real — horários atualizados a cada minuto a partir da API oficial HAFAS da FEDA
-- Qualquer paragem — pesquise por nome, navegue por todas as paragens ou filtre por linha
-- Sensores automáticos por linha — um sensor para cada linha que serve a paragem
-- Autocarros noturnos — inclui linhas BN
-- Atrasos em tempo real — mostra antecipações e atrasos quando a API os fornece
-- Sem serviço silencioso — sem erros no log nos dias sem serviço
-
-### Sensores criados
-
-| Sensor | Estado | Descrição |
-|--------|--------|-----------|
-| `bus_[paragem]_propera_sortida` | `11 min L2` | Próxima partida com linha e minutos |
-| `bus_[paragem]_l2` | `11:16` | Próxima partida da linha L2 |
-| `bus_[paragem]_bn2` | `Amanhã 23:57` | Próxima partida do autocarro noturno |
-
-### Instalação via HACS (recomendada)
-
-1. Abra **HACS → Integrações → ⋮ → Repositórios personalizados**
-2. Adicione `https://github.com/janfajessen/andorra_bus` como **Integração**
-3. Procure **Andorra Bus** e instale
-4. Reinicie o Home Assistant
-
-### Instalação manual
-
-1. Descarregue os ficheiros deste repositório
-2. Copie a pasta `andorra_bus` para `/config/custom_components/andorra_bus/`
-3. Reinicie o Home Assistant
-
-### Configuração
-
-| Método | Descrição |
-|--------|-----------|
-| Por nome | Escreva o nome da paragem (ex: `Valira Nova`) |
-| Todas as paragens | Navegue pela lista completa de paragens de Andorra |
-| Por linha | Filtre por número de linha (ex: `L2`, `BN2`) |
-
-### Notas técnicas
-
-- Utiliza a API HAFAS de `feda.hafas.cloud` (o mesmo backend que a app oficial FEDA Mou-te)
-- Não requer chave de API nem registo
-- Intervalo de atualização: **60 segundos** — Janela de tempo: **24 horas**
-
-</details>
 
 ---
 
 <p align="center">
-  Fet amb cariño a Andorra · Hecho con cariño en Andorra · Fait avec amour en Andorre · Made with love in Andorra · Feito com carinho em Andorra
+  Fet amb carinyo a Andorra · Hecho con cariño en Andorra · Fait avec amour en Andorre · Made with love in Andorra · Feito com carinho em Andorra
   <br/><br/>
   <a href="https://github.com/janfajessen/andorra_bus/issues">Reportar un error</a> ·
   <a href="https://github.com/janfajessen/andorra_bus/discussions">Discussions</a>
