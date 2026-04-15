@@ -1,6 +1,6 @@
 <div align="center">
 
-# Andorra Bus — Home Assistant Integration
+# Andorra Bus <br> Home Assistant Integration
 
 <img src="brands/logo@2x.png" width="450"/>
 
