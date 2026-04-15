@@ -1,0 +1,12 @@
+{
+  "domain": "andorra_bus",
+  "name": "Andorra Bus",
+  "version": "1.2.0",
+  "documentation": "https://github.com/janfajessen/andorra_bus",
+  "issue_tracker": "https://github.com/janfajessen/andorra_bus/issues",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@janfajessen"],
+  "config_flow": true,
+  "iot_class": "cloud_polling"
+}
