@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Ajouter un arrêt de bus",
+        "description": "Comment souhaitez-vous rechercher un arrêt ?",
+        "data": {
+          "search_method": "Méthode de recherche"
+        }
+      },
+      "by_name": {
+        "title": "Recherche par nom",
+        "description": "Entrez le nom d'un arrêt ou d'une localité d'Andorre",
+        "data": {
+          "stop_search": "Nom de l'arrêt (ex : Valira Nova, Encamp, Escaldes...)"
+        }
+      },
+      "all_stops": {
+        "title": "Tous les arrêts d'Andorre",
+        "description": "Sélectionnez un arrêt dans la liste complète",
+        "data": {
+          "stop_id": "Arrêt"
+        }
+      },
+      "by_line": {
+        "title": "Recherche par ligne",
+        "description": "Entrez le numéro ou le nom de la ligne (ex : L1, L3, N1...)",
+        "data": {
+          "line_search": "Ligne de bus"
+        }
+      },
+      "select_stop": {
+        "title": "Sélectionner l'arrêt",
+        "description": "Choisissez l'arrêt que vous souhaitez surveiller",
+        "data": {
+          "stop_id": "Arrêt"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de se connecter au serveur FEDA Mou-te",
+      "no_results": "Aucun arrêt trouvé avec ce nom",
+      "empty_query": "Veuillez entrer un nom d'arrêt ou une ligne"
+    },
+    "abort": {
+      "already_configured": "Cet arrêt est déjà configuré"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options de l'arrêt",
+        "data": {
+          "scan_interval": "Intervalle de mise à jour (secondes, 30-300)",
+          "departures_count": "Nombre de départs à afficher (1-10)"
+        }
+      }
+    }
+  }
+}

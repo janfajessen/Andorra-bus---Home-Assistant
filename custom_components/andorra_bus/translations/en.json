@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add bus stop",
+        "description": "How would you like to search for a stop?",
+        "data": {
+          "search_method": "Search method"
+        }
+      },
+      "by_name": {
+        "title": "Search by name",
+        "description": "Enter the name of a stop or town in Andorra",
+        "data": {
+          "stop_search": "Stop name (e.g. Valira Nova, Encamp, Escaldes...)"
+        }
+      },
+      "all_stops": {
+        "title": "All Andorra stops",
+        "description": "Select a stop from the full list",
+        "data": {
+          "stop_id": "Stop"
+        }
+      },
+      "by_line": {
+        "title": "Search by line",
+        "description": "Enter the line number or name (e.g. L1, L3, N1...)",
+        "data": {
+          "line_search": "Bus line"
+        }
+      },
+      "select_stop": {
+        "title": "Select stop",
+        "description": "Choose the stop you want to monitor",
+        "data": {
+          "stop_id": "Stop"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to FEDA Mou-te server",
+      "no_results": "No stops found with that name",
+      "empty_query": "Please enter a stop name or line"
+    },
+    "abort": {
+      "already_configured": "This stop is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Stop options",
+        "data": {
+          "scan_interval": "Update interval (seconds, 30-300)",
+          "departures_count": "Number of departures to show (1-10)"
+        }
+      }
+    }
+  }
+}

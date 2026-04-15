@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Adicionar paragem de autocarro",
+        "description": "Como pretende procurar uma paragem?",
+        "data": {
+          "search_method": "Método de pesquisa"
+        }
+      },
+      "by_name": {
+        "title": "Pesquisa por nome",
+        "description": "Introduza o nome de uma paragem ou localidade de Andorra",
+        "data": {
+          "stop_search": "Nome da paragem (ex: Valira Nova, Encamp, Escaldes...)"
+        }
+      },
+      "all_stops": {
+        "title": "Todas as paragens de Andorra",
+        "description": "Selecione uma paragem da lista completa",
+        "data": {
+          "stop_id": "Paragem"
+        }
+      },
+      "by_line": {
+        "title": "Pesquisa por linha",
+        "description": "Introduza o número ou nome da linha (ex: L1, L3, N1...)",
+        "data": {
+          "line_search": "Linha de autocarro"
+        }
+      },
+      "select_stop": {
+        "title": "Selecionar paragem",
+        "description": "Escolha a paragem que pretende monitorizar",
+        "data": {
+          "stop_id": "Paragem"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Não foi possível ligar ao servidor FEDA Mou-te",
+      "no_results": "Nenhuma paragem encontrada com esse nome",
+      "empty_query": "Por favor introduza um nome de paragem ou linha"
+    },
+    "abort": {
+      "already_configured": "Esta paragem já está configurada"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opções da paragem",
+        "data": {
+          "scan_interval": "Intervalo de atualização (segundos, 30-300)",
+          "departures_count": "Número de partidas a mostrar (1-10)"
+        }
+      }
+    }
+  }
+}

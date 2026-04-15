@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bushaltestelle hinzufügen",
+        "description": "Wie möchten Sie nach einer Haltestelle suchen?",
+        "data": {
+          "search_method": "Suchmethode"
+        }
+      },
+      "by_name": {
+        "title": "Suche nach Name",
+        "description": "Geben Sie den Namen einer Haltestelle oder Ortschaft in Andorra ein",
+        "data": {
+          "stop_search": "Haltestellenname (z.B. Valira Nova, Encamp, Escaldes...)"
+        }
+      },
+      "all_stops": {
+        "title": "Alle Haltestellen in Andorra",
+        "description": "Wählen Sie eine Haltestelle aus der vollständigen Liste",
+        "data": {
+          "stop_id": "Haltestelle"
+        }
+      },
+      "by_line": {
+        "title": "Suche nach Linie",
+        "description": "Geben Sie die Liniennummer oder den Liniennamen ein (z.B. L1, L3, N1...)",
+        "data": {
+          "line_search": "Buslinie"
+        }
+      },
+      "select_stop": {
+        "title": "Haltestelle auswählen",
+        "description": "Wählen Sie die Haltestelle, die Sie überwachen möchten",
+        "data": {
+          "stop_id": "Haltestelle"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum FEDA Mou-te Server nicht möglich",
+      "no_results": "Keine Haltestelle mit diesem Namen gefunden",
+      "empty_query": "Bitte geben Sie einen Haltestellennamen oder eine Linie ein"
+    },
+    "abort": {
+      "already_configured": "Diese Haltestelle ist bereits konfiguriert"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Haltestellenoptionen",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall (Sekunden, 30-300)",
+          "departures_count": "Anzahl der anzuzeigenden Abfahrten (1-10)"
+        }
+      }
+    }
+  }
+}
