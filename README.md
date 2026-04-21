@@ -97,6 +97,14 @@ automation:
 - No requiere ninguna clave de API ni registro
 - Intervalo de actualización: **60 segundos** — Ventana de tiempo: **24 horas**
 
+*Si esta integración te resulta útil, considera darle una estrella ⭐ en GitHub.*
+O considera apoyar su desarrollo
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow?style=for-the-badge&logo=buymeacoffee)
+](https://www.buymeacoffee.com/janfajessen) 
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red?style=for-the-badge&logo=patreon)](https://www.patreon.com/janfajessen)
+</div>
+
+
 </details>
 
 ---
@@ -152,6 +160,13 @@ Intégration personnalisée pour obtenir les horaires en temps réel des bus pub
 - Utilise l'API HAFAS de `feda.hafas.cloud` (même backend que l'app officielle FEDA Mou-te)
 - Aucune clé API ni inscription requise
 - Intervalle de mise à jour : **60 secondes** — Fenêtre de temps : **24 heures**
+
+*Si cette intégration vous est utile, n'hésitez pas à lui attribuer une étoile sur GitHub.* 
+Vous pouvez également soutenir son développement
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow?style=for-the-badge&logo=buymeacoffee)
+](https://www.buymeacoffee.com/janfajessen) 
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red?style=for-the-badge&logo=patreon)](https://www.patreon.com/janfajessen)
+</div>
 
 </details>
 
@@ -211,6 +226,14 @@ Custom integration to get real-time public bus schedules for Andorra (FEDA Mou-t
 - Update interval: **60 seconds** — Time window: **24 hours**
 - Coverage: all urban and interurban lines in Andorra (L1-L5, BN1-BN3...)
 
+*If this integration is useful to you, consider giving it a ⭐ on GitHub.*
+Or consider supporting development!
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow?style=for-the-badge&logo=buymeacoffee)
+](https://www.buymeacoffee.com/janfajessen) 
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red?style=for-the-badge&logo=patreon)](https://www.patreon.com/janfajessen)
+</div>
+
 </details>
 
 ---
@@ -266,6 +289,13 @@ Integração personalizada para obter os horários em tempo real dos autocarros 
 - Utiliza a API HAFAS de `feda.hafas.cloud` (o mesmo backend que a app oficial FEDA Mou-te)
 - Não requer chave de API nem registo
 - Intervalo de atualização: **60 segundos** — Janela de tempo: **24 horas**
+
+*Se esta integração for útil para você, considere dar uma ⭐ no GitHub.*
+Ou considere apoiar o desenvolvimento!
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow?style=for-the-badge&logo=buymeacoffee)
+](https://www.buymeacoffee.com/janfajessen) 
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red?style=for-the-badge&logo=patreon)](https://www.patreon.com/janfajessen)
+</div>
 
 </details>
 
@@ -591,6 +621,16 @@ automation:
 - Dies sense servei: la integració retorna llista buida silenciosament, sense errors al log
 
 ---
+
+
+*Si aquesta integració es util per a tu, considera donar-li una ⭐ a GitHub.*
+O considera donar suport pel desenvolupament
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow?style=for-the-badge&logo=buymeacoffee)
+](https://www.buymeacoffee.com/janfajessen) 
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red?style=for-the-badge&logo=patreon)](https://www.patreon.com/janfajessen)
+</div>
+
 
 ---
 
