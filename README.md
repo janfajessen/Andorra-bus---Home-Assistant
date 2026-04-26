@@ -2,7 +2,7 @@
 
 # Andorra Bus <br> Home Assistant Integration
 
-<img src="brands/logo@2x.png" width="450"/>
+<img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/logo%402x.png" width="450"/>
 
 ![Version](https://img.shields.io/badge/version-1.5.24-blue?style=for-the-badge)
 ![HA](https://img.shields.io/badge/Home%20Assistant-2024.1+-orange?style=for-the-badge&logo=home-assistant)
@@ -56,7 +56,7 @@ Integración personalizada para obtener los horarios en tiempo real de los autob
 3. Busca **Andorra Bus** e instala
 4. Reinicia Home Assistant
 5. Ve a **Configuración → Integraciones → Añadir integración** y busca **Andorra Bus**
-<img src="brands/icon@2x.png" width="150"/>
+<img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
 
 ### Instalación manual
 
@@ -139,7 +139,7 @@ Intégration personnalisée pour obtenir les horaires en temps réel des bus pub
 2. Ajoutez `https://github.com/janfajessen/andorra_bus` comme **Intégration**
 3. Cherchez **Andorra Bus** et installez
 4. Redémarrez Home Assistant
-<img src="brands/icon@2x.png" width="150"/>
+<img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
 
 ### Installation manuelle
 
@@ -203,7 +203,7 @@ Custom integration to get real-time public bus schedules for Andorra (FEDA Mou-t
 3. Search for **Andorra Bus** and install
 4. Restart Home Assistant
 5. Go to **Settings → Integrations → Add integration** and search **Andorra Bus**
-<img src="brands/icon@2x.png" width="150"/>
+<img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
 
 ### Manual installation
 
@@ -268,7 +268,7 @@ Integração personalizada para obter os horários em tempo real dos autocarros 
 2. Adicione `https://github.com/janfajessen/andorra_bus` como **Integração**
 3. Procure **Andorra Bus** e instale
 4. Reinicie o Home Assistant
-<img src="brands/icon@2x.png" width="150"/>
+<img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
 
 ### Instalação manual
 
@@ -376,7 +376,7 @@ next_departures:
 3. Busca **Andorra Bus** i instal·la
 4. Reinicia Home Assistant
 5. Ves a **Configuració → Integracions → Afegir integració** i cerca **Andorra Bus**
-<img src="brands/icon@2x.png" width="150"/>
+<img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
 
 ### Instal·lació manual
 
