@@ -1,7 +1,7 @@
 {
   "domain": "andorra_bus",
   "name": "Andorra Bus",
-  "version": "1.2.0",
+  "version": "1.6.16",
   "documentation": "https://github.com/janfajessen/Andorra-bus---Home-Assistant",
   "issue_tracker": "https://github.com/janfajessen/Andorra-bus---Home-Assistant/issues",
   "requirements": [],
