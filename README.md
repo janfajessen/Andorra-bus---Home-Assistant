@@ -4,7 +4,7 @@
 
 <img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/logo%402x.png" width="450"/>
 
-![Version](https://img.shields.io/badge/version-1.6.13-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.6.16-blue?style=for-the-badge)
 ![HA](https://img.shields.io/badge/Home%20Assistant-2024.1+-orange?style=for-the-badge&logo=home-assistant)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python)
@@ -52,7 +52,7 @@ Integración personalizada para obtener los horarios en tiempo real de los autob
 ### Instalación via HACS (recomendada)
 
 1. Abre **HACS → Integraciones → ⋮ → Repositorios personalizados**
-2. Añade `https://github.com/janfajessen/andorra_bus` como **Integración**
+2. Añade `https://github.com/janfajessen/Andorra-bus---Home-Assistant` como **Integración**
 3. Busca **Andorra Bus** e instala
 4. Reinicia Home Assistant
 5. Ve a **Configuración → Integraciones → Añadir integración** y busca **Andorra Bus**
@@ -136,7 +136,7 @@ Intégration personnalisée pour obtenir les horaires en temps réel des bus pub
 ### Installation via HACS (recommandée)
 
 1. Ouvrez **HACS → Intégrations → ⋮ → Dépôts personnalisés**
-2. Ajoutez `https://github.com/janfajessen/andorra_bus` comme **Intégration**
+2. Ajoutez `https://github.com/janfajessen/Andorra-bus---Home-Assistant` comme **Intégration**
 3. Cherchez **Andorra Bus** et installez
 4. Redémarrez Home Assistant
 <img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
@@ -199,7 +199,7 @@ Custom integration to get real-time public bus schedules for Andorra (FEDA Mou-t
 ### HACS installation (recommended)
 
 1. Open **HACS → Integrations → ⋮ → Custom repositories**
-2. Add `https://github.com/janfajessen/andorra_bus` as an **Integration**
+2. Add `https://github.com/janfajessen/Andorra-bus---Home-Assistant` as an **Integration**
 3. Search for **Andorra Bus** and install
 4. Restart Home Assistant
 5. Go to **Settings → Integrations → Add integration** and search **Andorra Bus**
@@ -265,7 +265,7 @@ Integração personalizada para obter os horários em tempo real dos autocarros 
 ### Instalação via HACS (recomendada)
 
 1. Abra **HACS → Integrações → ⋮ → Repositórios personalizados**
-2. Adicione `https://github.com/janfajessen/andorra_bus` como **Integração**
+2. Adicione `https://github.com/janfajessen/Andorra-bus---Home-Assistant` como **Integração**
 3. Procure **Andorra Bus** e instale
 4. Reinicie o Home Assistant
 <img src="https://github.com/janfajessen/Andorra-bus---Home-Assistant/blob/1331b1c7976de2791a5acf8ad83a70c6e8542a30/brand/icon%402x.png" width="150"/>
@@ -372,7 +372,7 @@ next_departures:
 ### Installació via HACS (recomanada)
 
 1. Obre **HACS → Integracions → ⋮ → Repositoris personalitzats**
-2. Afegeix `https://github.com/janfajessen/andorra_bus` com a **Integració**
+2. Afegeix `https://github.com/janfajessen/Andorra-bus---Home-Assistant` com a **Integració**
 3. Busca **Andorra Bus** i instal·la
 4. Reinicia Home Assistant
 5. Ves a **Configuració → Integracions → Afegir integració** i cerca **Andorra Bus**
